@@ -53,7 +53,7 @@ Propiedad:
 Responde ÚNICAMENTE con uno de estos 4 valores, sin explicación: A+, A, B, C`;
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-6",
+    model: "claude-sonnet-5",
     max_tokens: 10,
     messages: [{ role: "user", content: prompt }],
   });
