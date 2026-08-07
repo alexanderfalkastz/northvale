@@ -14,64 +14,90 @@ export default function Home() {
       {/* ---------- NAV ---------- */}
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#top" className="brand">
-            North<b>vale</b>
-          </a>
-          <div className="nav-links">
+          <a href="#top" className="brand">Northvale</a>
+          <div className="nav-mid">
             <a href="#services">{t.nav.services}</a>
             <a href="#work">{t.nav.work}</a>
-            <a href="#process">{t.nav.process}</a>
+            <a href="#process">{t.nav.approach}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
-          <LanguageToggle locale={locale} />
+          <div className="nav-right">
+            <LanguageToggle locale={locale} />
+            <a href="#contact" className="btn btn-dark btn-sm">{t.nav.cta}</a>
+          </div>
         </div>
       </nav>
 
       <main id="top">
         {/* ---------- HERO ---------- */}
         <header className="hero">
-          <div className="hero-media" aria-hidden="true" />
-          <div className="container hero-content">
-            <span className="eyebrow">{t.hero.eyebrow}</span>
-            <h1>{t.hero.title}</h1>
-            <p className="sub sans">{t.hero.subtitle}</p>
-            <a href="#contact" className="btn btn-primary">
-              {t.hero.cta}
-            </a>
-          </div>
-          <div className="scroll-cue" aria-hidden="true">
-            <span className="line" />
+          <div className="container">
+            <div className="hero-copy">
+              <span className="eyebrow">{t.hero.eyebrow}</span>
+              <h1>
+                {t.hero.title} <span className="serif accent">{t.hero.accent}</span>
+              </h1>
+              <p className="sub">{t.hero.subtitle}</p>
+              <a href="#contact" className="btn btn-dark">{t.hero.cta}</a>
+            </div>
+            <div className="hero-video media media--wide media--video">
+              <span className="media-label">{t.hero.reel}</span>
+            </div>
           </div>
         </header>
 
-        {/* ---------- PROBLEM ---------- */}
-        <section className="section">
+        {/* ---------- STATEMENT ---------- */}
+        <section className="statement section-warm">
           <div className="container">
             <Reveal>
-              <span className="eyebrow">{t.problem.eyebrow}</span>
-              <p className="lead">{t.problem.text}</p>
+              <span className="eyebrow">{t.statement.eyebrow}</span>
+              <h2>
+                {t.statement.title} <span className="serif accent">{t.statement.accent}</span>
+              </h2>
+              <p>{t.statement.text}</p>
             </Reveal>
           </div>
         </section>
 
-        {/* ---------- SERVICES ---------- */}
+        {/* ---------- SERVICES (main) ---------- */}
         <section className="section" id="services">
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.services.eyebrow}</span>
               <h2>{t.services.title}</h2>
             </Reveal>
-            <div className="services-grid">
+            <div className="service-rows">
               {t.services.items.map((item, i) => (
-                <Reveal as="article" className="service-card" key={i}>
-                  <div className="num">{String(i + 1).padStart(2, "0")}</div>
-                  <div
-                    className={`media media--16x9 ${i === 0 || i === 1 ? "media--video" : ""}`}
-                  >
-                    <span className="media-label">{item.name}</span>
+                <Reveal as="article" className="service-row" key={i}>
+                  <div className="service-media">
+                    <div className={`media media--16x9 ${i < 2 ? "media--video" : ""}`}>
+                      <span className="media-label">{item.name}</span>
+                    </div>
                   </div>
+                  <div className="service-text">
+                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- SUPPORT (beyond content) ---------- */}
+        <section className="section section-warm">
+          <div className="container">
+            <Reveal className="section-head">
+              <span className="eyebrow">{t.support.eyebrow}</span>
+              <h2>{t.support.title}</h2>
+            </Reveal>
+            <div className="support-grid">
+              {t.support.items.map((item, i) => (
+                <Reveal as="article" className="support-card" key={i}>
+                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{item.name}</h3>
-                  <p className="sans">{item.desc}</p>
+                  <p>{item.desc}</p>
                 </Reveal>
               ))}
             </div>
@@ -96,7 +122,7 @@ export default function Home() {
         </section>
 
         {/* ---------- PROCESS ---------- */}
-        <section className="section" id="process">
+        <section className="section section-warm" id="process">
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.process.eyebrow}</span>
@@ -107,7 +133,7 @@ export default function Home() {
                 <Reveal className="step" key={i}>
                   <div className="num">{s.n}</div>
                   <h3>{s.t}</h3>
-                  <p className="sans">{s.d}</p>
+                  <p>{s.d}</p>
                 </Reveal>
               ))}
             </div>
@@ -130,7 +156,20 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
-            <p className="work-note sans">{t.work.note}</p>
+            <p className="work-note">{t.work.note}</p>
+          </div>
+        </section>
+
+        {/* ---------- STORIES ---------- */}
+        <section className="section section-warm">
+          <div className="container">
+            <Reveal className="section-head" style={{ marginBottom: 32 }}>
+              <span className="eyebrow">{t.stories.eyebrow}</span>
+              <h2>{t.stories.title}</h2>
+            </Reveal>
+            <Reveal>
+              <p className="work-note" style={{ marginTop: 0 }}>{t.stories.note}</p>
+            </Reveal>
           </div>
         </section>
 
@@ -139,19 +178,15 @@ export default function Home() {
           <div className="container contact-wrap">
             <Reveal>
               <span className="eyebrow">{t.contact.eyebrow}</span>
-              <h2 style={{ fontSize: "clamp(1.9rem,3.5vw,2.9rem)" }}>{t.contact.title}</h2>
-              <p className="sans" style={{ color: "var(--text-muted)", marginTop: 16 }}>
-                {t.contact.subtitle}
-              </p>
+              <h2>{t.contact.title}</h2>
+              <p className="sub">{t.contact.subtitle}</p>
             </Reveal>
             <Reveal>
-              <form className="form sans" method="POST" action="/api/contact">
+              <form className="form" method="POST" action="/api/contact">
                 <input name="name" placeholder={t.contact.name} required />
                 <input name="email" type="email" placeholder={t.contact.email} required />
                 <input name="propertyUrl" placeholder={t.contact.url} />
-                <button type="submit" className="btn btn-primary">
-                  {t.contact.submit}
-                </button>
+                <button type="submit" className="btn btn-dark">{t.contact.submit}</button>
               </form>
             </Reveal>
           </div>
@@ -161,13 +196,9 @@ export default function Home() {
       {/* ---------- FOOTER ---------- */}
       <footer className="footer">
         <div className="footer-inner">
-          <a href="#top" className="brand">
-            North<b>vale</b>
-          </a>
-          <p className="sans">{t.footer.tagline}</p>
-          <p className="sans">
-            hello@northvale.com &nbsp;·&nbsp; {t.footer.rights}
-          </p>
+          <a href="#top" className="brand">Northvale</a>
+          <p>{t.footer.tagline}</p>
+          <p>hello@northvale.com &nbsp;·&nbsp; {t.footer.rights}</p>
         </div>
       </footer>
     </>
