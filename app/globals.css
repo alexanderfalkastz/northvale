@@ -191,3 +191,55 @@ img,video{max-width:100%;display:block}
   .container{padding:0 20px}
   .process-grid,.work-grid{grid-template-columns:1fr}
 }
+
+/* ============ v3.1 — MOVIMIENTO & PREMIUM ============ */
+
+/* Hero: entrada cinematográfica escalonada al cargar */
+@keyframes riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.hero .eyebrow{animation:riseIn .9s var(--ease) both .05s}
+.hero h1{animation:riseIn 1s var(--ease) both .18s}
+.hero .sub{animation:riseIn 1s var(--ease) both .4s}
+.hero .btn-dark{animation:riseIn 1s var(--ease) both .56s}
+.hero-video{animation:riseIn 1.2s var(--ease) both .68s}
+
+/* Nav que se afina al scrollear + subrayado animado */
+.nav{transition:box-shadow .35s var(--ease),background .35s}
+.nav-inner{transition:padding .35s var(--ease)}
+:root[data-scrolled] .nav{box-shadow:0 6px 30px rgba(0,0,0,.07);background:rgba(255,255,255,.92)}
+:root[data-scrolled] .nav-inner{padding-top:11px;padding-bottom:11px}
+.nav-mid a{position:relative}
+.nav-mid a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--ink);transition:width .3s var(--ease)}
+.nav-mid a:hover::after{width:100%}
+
+/* Botones con más profundidad */
+.btn-dark{box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.btn-dark:hover{box-shadow:0 12px 34px rgba(21,23,23,.22)}
+
+/* Media viva: leve drift constante + zoom al hover + play pulsante */
+.media{background-size:150% 150%;animation:drift 22s var(--ease) infinite alternate;transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+@keyframes drift{from{background-position:0% 0%}to{background-position:100% 100%}}
+.work-grid .media:hover,.service-media .media:hover{transform:scale(1.015);box-shadow:0 26px 60px rgba(0,0,0,.14)}
+.media--video::after{animation:playpulse 2.6s var(--ease) infinite}
+@keyframes playpulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.09)}}
+
+/* Marquee (banda de servicios en movimiento) */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;white-space:nowrap;background:var(--bg)}
+.marquee-track{display:inline-flex;align-items:center;animation:marquee 30s linear infinite;will-change:transform}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{font-family:var(--font-serif),serif;font-style:italic;font-size:clamp(1.5rem,3vw,2.3rem);color:var(--ink);padding:0 14px}
+.marquee-dot{color:var(--accent);font-size:1.1rem;padding:0 6px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sección oscura (manifiesto) — contraste dramático */
+.section-dark{background:var(--ink);color:#fff}
+.section-dark .eyebrow{color:#8f8f86}
+.section-dark p{color:#c7c5bd}
+.section-dark .serif.accent,.section-dark .accent{color:#d9b476}
+
+/* Refuerzo reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .hero .eyebrow,.hero h1,.hero .sub,.hero .btn-dark,.hero-video{animation:none}
+  .media{animation:none}
+  .media--video::after{animation:none}
+  .marquee-track{animation:none}
+}

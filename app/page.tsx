@@ -2,15 +2,21 @@ import { resolveLocale, translations } from "../lib/i18n";
 import LanguageToggle from "./components/LanguageToggle";
 import BeforeAfter from "./components/BeforeAfter";
 import Reveal from "./components/Reveal";
+import ScrollHeader from "./components/ScrollHeader";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
 
 export default function Home() {
   const locale = resolveLocale();
   const t = translations[locale];
+  const marquee = [
+    ...t.services.items.map((i) => i.name),
+    ...t.support.items.map((i) => i.name),
+  ];
 
   return (
     <>
+      <ScrollHeader />
       {/* ---------- NAV ---------- */}
       <nav className="nav">
         <div className="nav-inner">
@@ -46,8 +52,20 @@ export default function Home() {
           </div>
         </header>
 
-        {/* ---------- STATEMENT ---------- */}
-        <section className="statement section-warm">
+        {/* ---------- MARQUEE ---------- */}
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track">
+            {[...marquee, ...marquee].map((w, i) => (
+              <span className="marquee-item" key={i}>
+                {w}
+                <span className="marquee-dot">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* ---------- STATEMENT (manifiesto, oscuro) ---------- */}
+        <section className="statement section-dark">
           <div className="container">
             <Reveal>
               <span className="eyebrow">{t.statement.eyebrow}</span>
@@ -68,7 +86,7 @@ export default function Home() {
             </Reveal>
             <div className="service-rows">
               {t.services.items.map((item, i) => (
-                <Reveal as="article" className="service-row" key={i}>
+                <Reveal as="article" className="service-row" key={i} delay={i * 60}>
                   <div className="service-media">
                     <div className={`media media--16x9 ${i < 2 ? "media--video" : ""}`}>
                       <span className="media-label">{item.name}</span>
@@ -94,7 +112,7 @@ export default function Home() {
             </Reveal>
             <div className="support-grid">
               {t.support.items.map((item, i) => (
-                <Reveal as="article" className="support-card" key={i}>
+                <Reveal as="article" className="support-card" key={i} delay={i * 80}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{item.name}</h3>
                   <p>{item.desc}</p>
@@ -130,7 +148,7 @@ export default function Home() {
             </Reveal>
             <div className="process-grid">
               {t.process.steps.map((s, i) => (
-                <Reveal className="step" key={i}>
+                <Reveal className="step" key={i} delay={i * 90}>
                   <div className="num">{s.n}</div>
                   <h3>{s.t}</h3>
                   <p>{s.d}</p>
@@ -149,7 +167,7 @@ export default function Home() {
             </Reveal>
             <div className="work-grid">
               {[0, 1, 2, 3, 4, 5].map((i) => (
-                <Reveal key={i}>
+                <Reveal key={i} delay={(i % 3) * 80}>
                   <div className={`media media--16x9 ${i % 3 === 0 ? "media--video" : ""}`}>
                     <span className="media-label">Northvale · 0{i + 1}</span>
                   </div>
