@@ -15,12 +15,18 @@
  *     --url "https://airbnb.com/rooms/xxxx" \
  *     --photos "https://.../1.jpg,https://.../2.jpg" \
  *     --notes "Fotos actuales oscuras, propiedad frente al mar con potencial alto"
+ *
+ * Modo manual (costo $0, sin API): agregá --score A+|A|B|C y vos hacés de Analyst
+ * siguiendo el SOP-002. Ideal para el piloto manual de leads antes de cargar
+ * créditos. Ej: npm run add-property -- --name "..." --url "..." --score A+
  */
 import "dotenv/config";
 import Anthropic from "@anthropic-ai/sdk";
 import { supabase, type Property } from "../lib/supabase";
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+// El cliente de Anthropic se crea de forma perezosa dentro de scoreProperty,
+// solo cuando hace falta puntuar con IA. Así el modo manual (--score) no
+// requiere ANTHROPIC_API_KEY ni gasta un centavo en la API.
 
 function parseArgs(): Record<string, string> {
   const args = process.argv.slice(2);
@@ -52,6 +58,7 @@ Propiedad:
 
 Responde ÚNICAMENTE con uno de estos 4 valores, sin explicación: A+, A, B, C`;
 
+  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   const response = await anthropic.messages.create({
     model: "claude-sonnet-5",
     max_tokens: 10,
@@ -97,9 +104,23 @@ async function main() {
     notes: args.notes,
   };
 
-  console.log("Calculando Score...");
-  const score = await scoreProperty(propertyData);
-  console.log(`Score asignado: ${score}`);
+  // Modo manual (costo $0): si pasás --score A+|A|B|C se usa ese valor y NO se
+  // llama a la API de Claude. Pensado para el piloto manual de leads, donde vos
+  // hacés de Analyst siguiendo el SOP-002. Sin --score, puntúa la IA.
+  const validScores = ["A+", "A", "B", "C"];
+  let score: "A+" | "A" | "B" | "C";
+  if (args.score) {
+    if (!validScores.includes(args.score)) {
+      console.error(`Score inválido: "${args.score}". Usá uno de: A+, A, B, C`);
+      process.exit(1);
+    }
+    score = args.score as "A+" | "A" | "B" | "C";
+    console.log(`Score manual asignado: ${score} (sin llamar a la API).`);
+  } else {
+    console.log("Calculando Score con el Analyst (API de Claude)...");
+    score = await scoreProperty(propertyData);
+    console.log(`Score asignado: ${score}`);
+  }
 
   const { data, error } = await supabase
     .from("properties")

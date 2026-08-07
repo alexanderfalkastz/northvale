@@ -69,6 +69,32 @@ Por cada propiedad encontrada:
 
 Tiempo objetivo: máximo 3 minutos de procesamiento por lead (si es manual/semi-automático).
 
+**Foco de captación actual: anfitriones/gestoras de Airbnb.** Airbnb se usa como
+RADAR para *encontrar y calificar* propiedades premium, NO como canal de contacto
+(Airbnb no expone el contacto del host y filtra datos en su chat). El mejor patrón
+de lead: propiedad de alto valor + fotos actuales flojas (gap visual = score A+ y
+mejor gancho de venta). Priorizar gestoras/property managers (cartera + presupuesto)
+por sobre hosts hobbistas de una sola propiedad barata.
+
+## SOP-003 — Enriquecimiento de contacto (Airbnb no lo da)
+
+Como Airbnb no expone el contacto, por cada lead calificado hay que encontrar al
+dueño/gestora por fuera antes de poder contactar:
+1. Buscar el nombre de la propiedad en Google → web de reserva directa o Instagram.
+2. Búsqueda inversa de imagen con una foto del listing → dónde más está publicada.
+3. Detectar si hay una gestora detrás (un contacto = varias propiedades).
+4. Guardar el canal y handle de contacto en el lead (usar `notes` por ahora, o la
+   tabla `contacts`). El contacto se hace SIEMPRE por fuera de Airbnb.
+
+## SOP-004 — Outreach demo-first (agente Sales)
+
+Nunca contactar con solo texto. Cada primer mensaje va con un **demo real hecho
+con una foto propia del prospecto** (antes/después cinematográfico). El demo es el
+grueso de la conversión. Guion y plantillas (IG DM + email): ver
+`docs/outreach-demo-first.md`. Reglas: personalizar siempre, nunca liderar con
+precio, nunca decir "IA" ni "video", un solo follow-up. Medir enviados → respondidos
+→ reunión → cliente en el CRM.
+
 ## SOP-002 — Checklist que debe usar el agente Analyst
 
 Al calcular el Score de una propiedad, evaluar:
