@@ -4,7 +4,6 @@ import BeforeAfter from "./components/BeforeAfter";
 import Reveal from "./components/Reveal";
 import ScrollHeader from "./components/ScrollHeader";
 import SmoothScroll from "./components/SmoothScroll";
-import Cursor from "./components/Cursor";
 import TextReveal from "./components/TextReveal";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
@@ -21,7 +20,6 @@ export default function Home() {
     <>
       <ScrollHeader />
       <SmoothScroll />
-      <Cursor />
       {/* ---------- NAV ---------- */}
       <nav className="nav">
         <div className="nav-inner">
