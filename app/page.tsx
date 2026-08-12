@@ -2,60 +2,86 @@ import { resolveLocale, translations } from "../lib/i18n";
 import LanguageToggle from "./components/LanguageToggle";
 import BeforeAfter from "./components/BeforeAfter";
 import Reveal from "./components/Reveal";
+import TextReveal from "./components/TextReveal";
 import ScrollHeader from "./components/ScrollHeader";
 import SmoothScroll from "./components/SmoothScroll";
-import TextReveal from "./components/TextReveal";
+import Parallax from "./components/Parallax";
+import Logo from "./components/Logo";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
+
+function Kicker({ n, children }: { n: string; children: React.ReactNode }) {
+  return (
+    <p className="kicker">
+      <span className="k-num">{n}</span>
+      <span className="k-line" />
+      {children}
+    </p>
+  );
+}
 
 export default function Home() {
   const locale = resolveLocale();
   const t = translations[locale];
-  const marquee = [
-    ...t.services.items.map((i) => i.name),
-    ...t.support.items.map((i) => i.name),
-  ];
+  const marquee = [...t.services.items.map((i) => i.name), ...t.support.items.map((i) => i.name)];
 
   return (
     <>
       <ScrollHeader />
       <SmoothScroll />
+      <Parallax />
+
       {/* ---------- NAV ---------- */}
       <nav className="nav">
         <div className="nav-inner">
-          <a href="#top" className="brand">Northvale</a>
+          <a href="#top" aria-label="Northvale">
+            <Logo variant="full" />
+          </a>
           <div className="nav-mid">
-            <a href="#services">{t.nav.services}</a>
+            <a href="#experience">{t.nav.positioning}</a>
             <a href="#work">{t.nav.work}</a>
-            <a href="#process">{t.nav.approach}</a>
+            <a href="#capabilities">{t.nav.approach}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
           <div className="nav-right">
             <LanguageToggle locale={locale} />
-            <a href="#contact" className="btn btn-dark btn-sm">{t.nav.cta}</a>
+            <a href="#contact" className="btn btn-ghost btn-sm">
+              {t.nav.cta} <span className="arw" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </nav>
 
       <main id="top">
-        {/* ---------- HERO ---------- */}
+        {/* ---------- 01 · IMPACT (hero) ---------- */}
         <header className="hero">
-          <div className="container">
-            <div className="hero-copy">
-              <span className="eyebrow">{t.hero.eyebrow}</span>
-              <h1>
-                {t.hero.title} <span className="serif accent">{t.hero.accent}</span>
-              </h1>
-              <p className="sub">{t.hero.subtitle}</p>
-              <a href="#contact" className="btn btn-dark">{t.hero.cta}</a>
+          <div className="hero-bg" data-parallax data-parallax-speed="-0.04" aria-hidden="true" />
+          <div className="hero-grid" aria-hidden="true" />
+          <div className="container hero-inner">
+            <span className="kicker">{t.hero.eyebrow}</span>
+            <h1>
+              {t.hero.title} <span className="serif accent">{t.hero.accent}</span>
+            </h1>
+            <p className="sub">{t.hero.subtitle}</p>
+            <div className="hero-cta">
+              <a href="#contact" className="btn btn-primary">
+                {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
+              </a>
+              <a href="#work" className="btn btn-ghost">{t.hero.cta2}</a>
             </div>
-            <div className="hero-video media media--wide media--video">
-              <span className="media-label">{t.hero.reel}</span>
-            </div>
+          </div>
+          <div className="container hero-foot" aria-hidden="true">
+            <span className="scroll-cue">
+              <span>SCROLL</span>
+              <span className="line" />
+            </span>
+            <span className="kicker">
+              <span className="k-num">01</span> Impact
+            </span>
           </div>
         </header>
 
-        {/* ---------- MARQUEE ---------- */}
+        {/* ---------- marquee ---------- */}
         <div className="marquee" aria-hidden="true">
           <div className="marquee-track">
             {[...marquee, ...marquee].map((w, i) => (
@@ -67,11 +93,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ---------- STATEMENT (manifiesto, oscuro) ---------- */}
-        <section className="statement section-dark">
+        {/* ---------- 01 · POSITIONING (manifiesto) ---------- */}
+        <section className="statement">
           <div className="container">
             <Reveal>
-              <span className="eyebrow">{t.statement.eyebrow}</span>
+              <Kicker n="01">{t.kickers.positioning}</Kicker>
               <h2>
                 {t.statement.title} <span className="serif accent">{t.statement.accent}</span>
               </h2>
@@ -80,23 +106,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- SERVICES (main) ---------- */}
-        <section className="section" id="services">
+        {/* ---------- 02 · IDENTITY (logo protagonista) ---------- */}
+        <section className="identity">
+          <div className="identity-glow" data-parallax data-parallax-speed="0.05" aria-hidden="true" />
+          <Reveal>
+            <Kicker n="02">{t.kickers.identity}</Kicker>
+          </Reveal>
+          <div className="identity-mark" data-parallax data-parallax-speed="0.06">
+            <Logo variant="mark" animate />
+          </div>
+          <Reveal>
+            <div className="identity-word">{t.identity.tagline}</div>
+          </Reveal>
+          <Reveal delay={120}>
+            <p className="identity-essence">
+              <span className="serif">{t.identity.essence}</span>
+            </p>
+          </Reveal>
+        </section>
+
+        {/* ---------- 03 · EXPERIENCE (servicios) ---------- */}
+        <section className="section section-top" id="experience">
           <div className="container">
             <Reveal className="section-head">
-              <span className="eyebrow">{t.services.eyebrow}</span>
+              <Kicker n="03">{t.kickers.experience}</Kicker>
               <TextReveal as="h2" text={t.services.title} />
             </Reveal>
             <div className="service-rows">
               {t.services.items.map((item, i) => (
-                <Reveal as="article" className="service-row" key={i} delay={i * 60}>
+                <Reveal as="article" className="service-row" key={i} delay={i * 40}>
                   <div className="service-media">
-                    <div className={`media media--16x9 ${i < 2 ? "media--video" : ""}`}>
+                    <div className={`media media--16x9 hoverable ${i < 2 ? "media--video" : ""}`}>
                       <span className="media-label">{item.name}</span>
                     </div>
                   </div>
                   <div className="service-text">
-                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="num">{String(i + 1).padStart(2, "0")} / 04</span>
                     <h3>{item.name}</h3>
                     <p>{item.desc}</p>
                   </div>
@@ -106,30 +151,56 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- SUPPORT (beyond content) ---------- */}
-        <section className="section section-warm">
+        {/* ---------- 04 · CAPABILITIES (support + proceso) ---------- */}
+        <section className="section section-top" id="capabilities">
           <div className="container">
             <Reveal className="section-head">
-              <span className="eyebrow">{t.support.eyebrow}</span>
+              <Kicker n="04">{t.kickers.capabilities}</Kicker>
               <TextReveal as="h2" text={t.support.title} />
             </Reveal>
             <div className="support-grid">
               {t.support.items.map((item, i) => (
-                <Reveal as="article" className="support-card" key={i} delay={i * 80}>
+                <Reveal as="article" className="support-card" key={i} delay={i * 70}>
                   <span className="num">{String(i + 1).padStart(2, "0")}</span>
                   <h3>{item.name}</h3>
                   <p>{item.desc}</p>
                 </Reveal>
               ))}
             </div>
+            <Reveal className="section-head" style={{ marginTop: "clamp(64px,8vw,110px)" }}>
+              <TextReveal as="h2" text={t.process.title} />
+            </Reveal>
+            <div className="process-grid">
+              {t.process.steps.map((s, i) => (
+                <Reveal className="step" key={i} delay={i * 80}>
+                  <span className="num">{s.n}</span>
+                  <h3>{s.t}</h3>
+                  <p>{s.d}</p>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* ---------- BEFORE / AFTER ---------- */}
-        <section className="section">
+        {/* ---------- 05 · PROOF (trabajo + antes/después) ---------- */}
+        <section className="section section-top" id="work">
           <div className="container">
             <Reveal className="section-head">
-              <span className="eyebrow">{t.beforeAfter.eyebrow}</span>
+              <Kicker n="05">{t.kickers.work}</Kicker>
+              <TextReveal as="h2" text={t.work.title} />
+            </Reveal>
+            <div className="work-grid">
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <Reveal key={i} delay={(i % 3) * 70}>
+                  <div className={`media media--16x9 hoverable ${i % 3 === 0 ? "media--video" : ""}`}>
+                    <span className="media-label">Northvale · 0{i + 1}</span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <p className="work-note">{t.work.note}</p>
+
+            <Reveal className="section-head" style={{ marginTop: "clamp(64px,8vw,110px)" }}>
               <TextReveal as="h2" text={t.beforeAfter.title} />
             </Reveal>
             <Reveal>
@@ -142,72 +213,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- PROCESS ---------- */}
-        <section className="section section-warm" id="process">
-          <div className="container">
-            <Reveal className="section-head">
-              <span className="eyebrow">{t.process.eyebrow}</span>
-              <TextReveal as="h2" text={t.process.title} />
-            </Reveal>
-            <div className="process-grid">
-              {t.process.steps.map((s, i) => (
-                <Reveal className="step" key={i} delay={i * 90}>
-                  <div className="num">{s.n}</div>
-                  <h3>{s.t}</h3>
-                  <p>{s.d}</p>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- WORK ---------- */}
-        <section className="section" id="work">
-          <div className="container">
-            <Reveal className="section-head">
-              <span className="eyebrow">{t.work.eyebrow}</span>
-              <TextReveal as="h2" text={t.work.title} />
-            </Reveal>
-            <div className="work-grid">
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <Reveal key={i} delay={(i % 3) * 80}>
-                  <div className={`media media--16x9 ${i % 3 === 0 ? "media--video" : ""}`}>
-                    <span className="media-label">Northvale · 0{i + 1}</span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-            <p className="work-note">{t.work.note}</p>
-          </div>
-        </section>
-
-        {/* ---------- STORIES ---------- */}
-        <section className="section section-warm">
-          <div className="container">
-            <Reveal className="section-head" style={{ marginBottom: 32 }}>
-              <span className="eyebrow">{t.stories.eyebrow}</span>
-              <TextReveal as="h2" text={t.stories.title} />
-            </Reveal>
-            <Reveal>
-              <p className="work-note" style={{ marginTop: 0 }}>{t.stories.note}</p>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ---------- CONTACT ---------- */}
-        <section className="section" id="contact">
+        {/* ---------- 06 · CTA (contacto) ---------- */}
+        <section className="section section-top" id="contact">
           <div className="container contact-wrap">
             <Reveal>
-              <span className="eyebrow">{t.contact.eyebrow}</span>
-              <TextReveal as="h2" text={t.contact.title} />
+              <Kicker n="06">{t.kickers.contact}</Kicker>
+              <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
             </Reveal>
-            <Reveal>
+            <Reveal delay={80}>
               <form className="form" method="POST" action="/api/contact">
                 <input name="name" placeholder={t.contact.name} required />
                 <input name="email" type="email" placeholder={t.contact.email} required />
                 <input name="propertyUrl" placeholder={t.contact.url} />
-                <button type="submit" className="btn btn-dark">{t.contact.submit}</button>
+                <button type="submit" className="btn btn-primary">
+                  {t.contact.submit} <span className="arw" aria-hidden="true">→</span>
+                </button>
               </form>
             </Reveal>
           </div>
@@ -217,7 +238,7 @@ export default function Home() {
       {/* ---------- FOOTER ---------- */}
       <footer className="footer">
         <div className="footer-inner">
-          <a href="#top" className="brand">Northvale</a>
+          <Logo variant="full" />
           <p>{t.footer.tagline}</p>
           <p>hello@northvale.com &nbsp;·&nbsp; {t.footer.rights}</p>
         </div>
