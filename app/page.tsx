@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* ---------- 01 · POSITIONING (manifiesto) ---------- */}
-        <section className="statement invert">
+        <section className="statement">
           <div className="container">
             <Reveal>
               <Kicker n="01">{t.kickers.positioning}</Kicker>

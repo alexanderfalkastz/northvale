@@ -1,16 +1,16 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#f4f0e8;
-  --bg-2:#ece5d7;
-  --panel:#efe9dd;
-  --text:#1a1714;
-  --muted:#6b655b;
-  --faint:#a79e90;
-  --line:rgba(26,23,20,.12);
-  --line-2:rgba(26,23,20,.20);
-  --accent:#9c6b3f;
-  --accent-2:#b6803f;
+  --bg:#f7f4ec;
+  --bg-2:#efe9dc;
+  --panel:#f1ebde;
+  --text:#26231c;
+  --muted:#6f695d;
+  --faint:#a9a091;
+  --line:rgba(38,35,28,.12);
+  --line-2:rgba(38,35,28,.20);
+  --accent:#a2733e;
+  --accent-2:#c08a45;
   --maxw:1280px;
   --ease:cubic-bezier(.22,.68,.28,1);
   --ease-out:cubic-bezier(.16,1,.3,1);
@@ -18,9 +18,9 @@
 
 /* Secciones oscuras (manifiesto + identidad): invierten los tokens localmente */
 .invert{
-  --bg:#17130f;
-  --bg-2:#1e1913;
-  --panel:#221c15;
+  --bg:#1c1710;
+  --bg-2:#241d14;
+  --panel:#2a2118;
   --text:#ece7dd;
   --muted:#a49b8c;
   --faint:#6b6355;
@@ -40,8 +40,8 @@ body{
   font-feature-settings:"ss01","cv01";
 }
 
-h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:600;line-height:1.02;letter-spacing:-.025em}
-.serif{font-family:var(--font-serif),Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--font-display),Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:-.005em}
+.serif{font-family:var(--font-display),Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0}
 .accent{color:var(--accent)}
 a{color:inherit;text-decoration:none}
 img,video{max-width:100%;display:block}
@@ -55,7 +55,7 @@ img,video{max-width:100%;display:block}
 .kicker .k-line{width:34px;height:1px;background:var(--line-2)}
 
 /* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--font-sans);font-size:.9rem;font-weight:500;letter-spacing:.01em;padding:14px 26px;border-radius:3px;cursor:pointer;border:1px solid transparent;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:.7em;font-family:var(--font-sans);font-size:.92rem;font-weight:500;letter-spacing:.01em;padding:15px 32px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);white-space:nowrap}
 .btn .arw{display:inline-block;transition:transform .35s var(--ease)}
 .btn:hover .arw{transform:translateX(5px)}
 .btn-primary{background:var(--text);color:var(--bg)}
@@ -121,7 +121,7 @@ img,video{max-width:100%;display:block}
 .hero-foot{animation:riseIn 1s var(--ease-out) both .8s}
 
 /* ---------- media placeholders (cinematic, dark) ---------- */
-.media{position:relative;width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:radial-gradient(120% 120% at 28% 12%,rgba(156,107,63,.10),transparent 55%),linear-gradient(150deg,#e8e1d3,#dcd3c2 70%,#d1c7b3);background-size:150% 150%;display:flex;align-items:flex-end;animation:drift 24s var(--ease) infinite alternate;transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .5s}
+.media{position:relative;width:100%;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 28% 12%,rgba(162,115,62,.10),transparent 55%),linear-gradient(150deg,#ece5d7,#e0d7c6 70%,#d5cbb7);background-size:150% 150%;display:flex;align-items:flex-end;animation:drift 24s var(--ease) infinite alternate;transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .5s}
 @keyframes drift{from{background-position:0% 0%}to{background-position:100% 100%}}
 .media--16x9{aspect-ratio:16/9}
 .media--wide{aspect-ratio:21/9}
@@ -140,7 +140,7 @@ img,video{max-width:100%;display:block}
 .section-head .sub{margin-top:20px;color:var(--muted);font-size:1.05rem;max-width:540px}
 
 /* ---------- statement (positioning) ---------- */
-.statement{padding:clamp(100px,14vw,190px) 0}
+.statement{padding:clamp(100px,14vw,190px) 0;background:var(--bg-2)}
 .statement h2{font-size:clamp(2.2rem,6vw,5rem);max-width:16ch;letter-spacing:-.035em;margin-top:26px}
 .statement p{margin-top:34px;max-width:600px;font-size:1.15rem;color:var(--muted);line-height:1.6}
 

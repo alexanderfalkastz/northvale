@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Cormorant_Garamond, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { resolveLocale } from "../lib/i18n";
 
-const display = Bricolage_Grotesque({
+const display = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
-const sans = Inter({
+const sans = Outfit({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -19,13 +20,6 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono",
-  display: "swap",
-});
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
   display: "swap",
 });
 
@@ -43,10 +37,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = resolveLocale();
   return (
-    <html
-      lang={locale}
-      className={`${display.variable} ${sans.variable} ${mono.variable} ${serif.variable}`}
-    >
+    <html lang={locale} className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );
