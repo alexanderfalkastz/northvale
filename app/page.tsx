@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* ---------- 01 · POSITIONING (manifiesto) ---------- */}
-        <section className="statement">
+        <section className="statement invert">
           <div className="container">
             <Reveal>
               <Kicker n="01">{t.kickers.positioning}</Kicker>
@@ -107,7 +107,7 @@ export default function Home() {
         </section>
 
         {/* ---------- 02 · IDENTITY (logo protagonista) ---------- */}
-        <section className="identity">
+        <section className="identity invert">
           <div className="identity-glow" data-parallax data-parallax-speed="0.05" aria-hidden="true" />
           <Reveal>
             <Kicker n="02">{t.kickers.identity}</Kicker>
