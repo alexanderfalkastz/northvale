@@ -7,6 +7,9 @@ import ScrollHeader from "./components/ScrollHeader";
 import SmoothScroll from "./components/SmoothScroll";
 import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
+import Hero3D from "./components/Hero3D";
+import Tilt from "./components/Tilt";
+import Magnetic from "./components/Magnetic";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
 
@@ -55,8 +58,12 @@ export default function Home() {
       <main id="top">
         {/* ---------- 01 · IMPACT (hero) ---------- */}
         <header className="hero">
-          <div className="hero-bg" data-parallax data-parallax-speed="-0.04" aria-hidden="true" />
-          <div className="hero-grid" aria-hidden="true" />
+          <div className="hero-fluid" aria-hidden="true">
+            <span className="blob blob-a" />
+            <span className="blob blob-b" />
+            <span className="blob blob-c" />
+          </div>
+          <Hero3D />
           <div className="container hero-inner">
             <span className="kicker">{t.hero.eyebrow}</span>
             <h1>
@@ -64,9 +71,11 @@ export default function Home() {
             </h1>
             <p className="sub">{t.hero.subtitle}</p>
             <div className="hero-cta">
-              <a href="#contact" className="btn btn-primary">
-                {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
-              </a>
+              <Magnetic>
+                <a href="#contact" className="btn btn-primary">
+                  {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
+                </a>
+              </Magnetic>
               <a href="#work" className="btn btn-ghost">{t.hero.cta2}</a>
             </div>
           </div>
@@ -136,9 +145,11 @@ export default function Home() {
               {t.services.items.map((item, i) => (
                 <Reveal as="article" className="service-row" key={i} delay={i * 40}>
                   <div className="service-media">
-                    <div className={`media media--16x9 hoverable ${i < 2 ? "media--video" : ""}`}>
-                      <span className="media-label">{item.name}</span>
-                    </div>
+                    <Tilt>
+                      <div className={`media media--16x9 hoverable ${i < 2 ? "media--video" : ""}`}>
+                        <span className="media-label">{item.name}</span>
+                      </div>
+                    </Tilt>
                   </div>
                   <div className="service-text">
                     <span className="num">{String(i + 1).padStart(2, "0")} / 04</span>
@@ -192,9 +203,11 @@ export default function Home() {
             <div className="work-grid">
               {[0, 1, 2, 3, 4, 5].map((i) => (
                 <Reveal key={i} delay={(i % 3) * 70}>
-                  <div className={`media media--16x9 hoverable ${i % 3 === 0 ? "media--video" : ""}`}>
-                    <span className="media-label">Northvale · 0{i + 1}</span>
-                  </div>
+                  <Tilt>
+                    <div className={`media media--16x9 hoverable ${i % 3 === 0 ? "media--video" : ""}`}>
+                      <span className="media-label">Northvale · 0{i + 1}</span>
+                    </div>
+                  </Tilt>
                 </Reveal>
               ))}
             </div>

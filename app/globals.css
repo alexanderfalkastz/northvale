@@ -254,3 +254,42 @@ img,video{max-width:100%;display:block}
   .hero-cta{width:100%}
   .hero-cta .btn{flex:1;justify-content:center}
 }
+
+/* ============ v4 — 3D + FLUIDO + PROFUNDIDAD ============ */
+
+/* Objeto 3D del hero */
+.hero-3d{position:absolute;top:0;right:-4%;bottom:0;width:56%;z-index:1;pointer-events:none}
+.hero-3d canvas{width:100%!important;height:100%!important}
+
+/* Fondo fluido vivo (blobs de color que flotan) */
+.hero-fluid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;will-change:transform}
+.blob-a{width:48vw;height:48vw;left:-10vw;top:-8vw;background:radial-gradient(circle,#ecca97,transparent 66%);animation:float-a 18s var(--ease) infinite}
+.blob-b{width:42vw;height:42vw;right:-6vw;top:8vh;background:radial-gradient(circle,#e3bcc9,transparent 66%);animation:float-b 22s var(--ease) infinite}
+.blob-c{width:40vw;height:40vw;left:26vw;bottom:-16vw;background:radial-gradient(circle,#bcd3c2,transparent 68%);animation:float-c 26s var(--ease) infinite}
+@keyframes float-a{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6vw,4vh) scale(1.1)}}
+@keyframes float-b{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,6vh) scale(1.08)}}
+@keyframes float-c{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,-5vh) scale(1.12)}}
+.hero-fluid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(247,244,236,.1),var(--bg));}
+
+/* Tilt 3D (tarjetas que se inclinan con el mouse) */
+.tilt{transition:transform .5s var(--ease-out);transform-style:preserve-3d;will-change:transform}
+
+/* Botón magnético */
+.magnetic{display:inline-flex;transition:transform .35s var(--ease-out);will-change:transform}
+
+/* Profundidad: media con sombra suave que levanta del papel */
+.media{box-shadow:0 26px 60px -30px rgba(38,35,28,.35)}
+.hoverable:hover{transform:scale(1.015);box-shadow:0 40px 90px -30px rgba(38,35,28,.5);border-color:var(--line-2)}
+
+/* Glow del objeto detrás del logo en identidad (más vida en la sección oscura) */
+.identity .identity-glow{background:radial-gradient(circle,rgba(200,168,106,.22),transparent 60%)}
+
+@media (prefers-reduced-motion:reduce){
+  .blob{animation:none}
+}
+@media (max-width:900px){
+  .hero-3d{width:112%;right:-6%;opacity:.4}
+  .blob{filter:blur(52px);opacity:.42}
+  .blob-c{display:none}
+}
