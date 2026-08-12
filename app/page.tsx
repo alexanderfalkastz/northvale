@@ -3,6 +3,9 @@ import LanguageToggle from "./components/LanguageToggle";
 import BeforeAfter from "./components/BeforeAfter";
 import Reveal from "./components/Reveal";
 import ScrollHeader from "./components/ScrollHeader";
+import SmoothScroll from "./components/SmoothScroll";
+import Cursor from "./components/Cursor";
+import TextReveal from "./components/TextReveal";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
 
@@ -17,6 +20,8 @@ export default function Home() {
   return (
     <>
       <ScrollHeader />
+      <SmoothScroll />
+      <Cursor />
       {/* ---------- NAV ---------- */}
       <nav className="nav">
         <div className="nav-inner">
@@ -82,7 +87,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.services.eyebrow}</span>
-              <h2>{t.services.title}</h2>
+              <TextReveal as="h2" text={t.services.title} />
             </Reveal>
             <div className="service-rows">
               {t.services.items.map((item, i) => (
@@ -108,7 +113,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.support.eyebrow}</span>
-              <h2>{t.support.title}</h2>
+              <TextReveal as="h2" text={t.support.title} />
             </Reveal>
             <div className="support-grid">
               {t.support.items.map((item, i) => (
@@ -127,7 +132,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.beforeAfter.eyebrow}</span>
-              <h2>{t.beforeAfter.title}</h2>
+              <TextReveal as="h2" text={t.beforeAfter.title} />
             </Reveal>
             <Reveal>
               <BeforeAfter
@@ -144,7 +149,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.process.eyebrow}</span>
-              <h2>{t.process.title}</h2>
+              <TextReveal as="h2" text={t.process.title} />
             </Reveal>
             <div className="process-grid">
               {t.process.steps.map((s, i) => (
@@ -163,7 +168,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head">
               <span className="eyebrow">{t.work.eyebrow}</span>
-              <h2>{t.work.title}</h2>
+              <TextReveal as="h2" text={t.work.title} />
             </Reveal>
             <div className="work-grid">
               {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -183,7 +188,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="section-head" style={{ marginBottom: 32 }}>
               <span className="eyebrow">{t.stories.eyebrow}</span>
-              <h2>{t.stories.title}</h2>
+              <TextReveal as="h2" text={t.stories.title} />
             </Reveal>
             <Reveal>
               <p className="work-note" style={{ marginTop: 0 }}>{t.stories.note}</p>
@@ -196,7 +201,7 @@ export default function Home() {
           <div className="container contact-wrap">
             <Reveal>
               <span className="eyebrow">{t.contact.eyebrow}</span>
-              <h2>{t.contact.title}</h2>
+              <TextReveal as="h2" text={t.contact.title} />
               <p className="sub">{t.contact.subtitle}</p>
             </Reveal>
             <Reveal>
