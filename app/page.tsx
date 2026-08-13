@@ -9,6 +9,7 @@ import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
 import Magnetic from "./components/Magnetic";
 import MobileMenu from "./components/MobileMenu";
+import BeforeAfter from "./components/BeforeAfter";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
 
@@ -195,11 +196,28 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------- TRANSFORMATION · antes/después ---------- */}
+        <section className="section section-top" id="transformation">
+          <div className="container">
+            <Reveal className="section-head">
+              <Kicker n="04">{locale === "es" ? "Transformación" : "Transformation"}</Kicker>
+              <TextReveal as="h2" text={t.beforeAfter.title} />
+            </Reveal>
+            <Reveal>
+              <BeforeAfter
+                before={t.beforeAfter.before}
+                after={t.beforeAfter.after}
+                caption={t.beforeAfter.caption}
+              />
+            </Reveal>
+          </div>
+        </section>
+
         {/* ---------- PACKAGES (tarjetas estilo Orionix) ---------- */}
         <section className="section section-top" id="packages">
           <div className="container">
             <Reveal className="section-head">
-              <Kicker n="04">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
+              <Kicker n="05">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
               <TextReveal as="h2" text={t.packages.title} />
               <p className="sub">{t.packages.note}</p>
             </Reveal>
@@ -226,7 +244,7 @@ export default function Home() {
         <section className="section section-top cta-final invert" id="contact">
           <div className="container">
             <Reveal>
-              <Kicker n="05">{t.kickers.contact}</Kicker>
+              <Kicker n="06">{t.kickers.contact}</Kicker>
               <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
             </Reveal>
