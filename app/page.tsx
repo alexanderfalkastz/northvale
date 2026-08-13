@@ -225,6 +225,7 @@ export default async function Home() {
               {t.packages.items.map((p, i) => (
                 <Reveal className={`pkg ${p.featured ? "pkg-featured" : ""}`} key={i} delay={i * 70}>
                   <span className="pkg-name">{p.name}</span>
+                  <span className="pkg-model">{p.model}</span>
                   <div className="pkg-tagline">{p.tagline}</div>
                   <ul className="pkg-features">
                     {p.features.map((f, j) => (

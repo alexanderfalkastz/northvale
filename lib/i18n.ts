@@ -26,7 +26,7 @@ type Dict = {
   identity: { essence: string; tagline: string };
   services: { title: string; items: Item[] };
   support: { title: string; items: Item[] };
-  packages: { title: string; note: string; items: { name: string; tagline: string; features: string[]; cta: string; featured?: boolean }[] };
+  packages: { title: string; note: string; items: { name: string; model: string; tagline: string; features: string[]; cta: string; featured?: boolean }[] };
   beforeAfter: { title: string; caption: string; before: string; after: string };
   process: { title: string; steps: { n: string; t: string; d: string }[] };
   work: { title: string; note: string };
@@ -86,9 +86,9 @@ export const translations: Record<Locale, Dict> = {
       title: "Ways to work together.",
       note: "Every property is different — pricing is tailored per project.",
       items: [
-        { name: "Essentials", tagline: "For a single premium listing.", features: ["Enhanced photography", "One cinematic reel", "Listing-ready delivery"], cta: "Request a quote" },
-        { name: "Signature", tagline: "The full cinematic package.", features: ["Cinematic property film", "Social reels + stills", "Enhanced photography", "Content strategy"], cta: "Request a quote", featured: true },
-        { name: "Studio", tagline: "For portfolios & managers.", features: ["Everything in Signature", "Ad strategy & campaigns", "Social media management", "Direct-booking microsite"], cta: "Talk to us" },
+        { name: "Essentials", model: "Per project", tagline: "For a single premium listing.", features: ["Enhanced photography", "One cinematic reel", "Virtual staging (up to 2 photos)", "48-hour express delivery"], cta: "Request a quote" },
+        { name: "Signature", model: "Per project", tagline: "The full cinematic package.", features: ["Cinematic property film", "Social reels + stills", "Enhanced photography", "Virtual staging", "Content strategy"], cta: "Request a quote", featured: true },
+        { name: "Studio", model: "Monthly", tagline: "For portfolios & managers.", features: ["Everything in Signature", "Ad strategy & campaigns", "Social media management", "Direct-booking microsite", "Monthly performance report"], cta: "Talk to us" },
       ],
     },
     beforeAfter: {
@@ -172,9 +172,9 @@ export const translations: Record<Locale, Dict> = {
       title: "Formas de trabajar juntos.",
       note: "Cada propiedad es distinta — el precio se arma por proyecto.",
       items: [
-        { name: "Esencial", tagline: "Para una propiedad premium.", features: ["Fotografía mejorada", "Un reel cinematográfico", "Entrega lista para publicar"], cta: "Pedir presupuesto" },
-        { name: "Signature", tagline: "El paquete cinematográfico completo.", features: ["Film cinematográfico", "Reels + fotos", "Fotografía mejorada", "Estrategia de contenido"], cta: "Pedir presupuesto", featured: true },
-        { name: "Studio", tagline: "Para carteras y gestoras.", features: ["Todo lo de Signature", "Estrategia y campañas", "Gestión de redes", "Micrositio de reserva directa"], cta: "Hablemos" },
+        { name: "Esencial", model: "Por proyecto", tagline: "Para una propiedad premium.", features: ["Fotografía mejorada", "Un reel cinematográfico", "Staging virtual (hasta 2 fotos)", "Entrega express 48 h"], cta: "Pedir presupuesto" },
+        { name: "Signature", model: "Por proyecto", tagline: "El paquete cinematográfico completo.", features: ["Film cinematográfico", "Reels + fotos", "Fotografía mejorada", "Staging virtual", "Estrategia de contenido"], cta: "Pedir presupuesto", featured: true },
+        { name: "Studio", model: "Mensual", tagline: "Para carteras y gestoras.", features: ["Todo lo de Signature", "Estrategia y campañas", "Gestión de redes", "Micrositio de reserva directa", "Reporte de rendimiento mensual"], cta: "Hablemos" },
       ],
     },
     beforeAfter: {
