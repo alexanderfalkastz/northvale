@@ -32,6 +32,7 @@ type Dict = {
   work: { title: string; note: string };
   contact: { title: string; subtitle: string; name: string; email: string; url: string; submit: string };
   footer: { tagline: string; rights: string };
+  thanks: { title: string; text: string; back: string };
 };
 
 export const translations: Record<Locale, Dict> = {
@@ -115,6 +116,11 @@ export const translations: Record<Locale, Dict> = {
       submit: "Request analysis",
     },
     footer: { tagline: "Premium visual marketing for luxury properties.", rights: "© 2026 Northvale. All rights reserved." },
+    thanks: {
+      title: "Thank you.",
+      text: "We received your request. We'll get back to you shortly with your property analysis.",
+      back: "Back to home",
+    },
   },
   es: {
     nav: { positioning: "Estudio", work: "Trabajo", approach: "Enfoque", contact: "Contacto", cta: "Iniciar proyecto" },
@@ -196,5 +202,10 @@ export const translations: Record<Locale, Dict> = {
       submit: "Solicitar análisis",
     },
     footer: { tagline: "Marketing visual premium para propiedades de lujo.", rights: "© 2026 Northvale. Todos los derechos reservados." },
+    thanks: {
+      title: "Gracias.",
+      text: "Recibimos tu solicitud. Te contactamos en breve con el análisis de tu propiedad.",
+      back: "Volver al inicio",
+    },
   },
 };
