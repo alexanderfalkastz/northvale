@@ -65,18 +65,27 @@ export default function Home() {
             <span className="blob blob-c" />
           </div>
           <div className="container hero-inner">
-            <span className="kicker">{t.hero.eyebrow}</span>
-            <h1>
-              {t.hero.title} <span className="serif accent">{t.hero.accent}</span>
-            </h1>
-            <p className="sub">{t.hero.subtitle}</p>
-            <div className="hero-cta">
-              <Magnetic>
-                <a href="#contact" className="btn btn-primary">
-                  {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
-                </a>
-              </Magnetic>
-              <a href="#services" className="btn btn-ghost">{t.hero.cta2}</a>
+            <div className="hero-copy">
+              <span className="kicker">{t.hero.eyebrow}</span>
+              <h1>
+                {t.hero.title} <span className="serif accent">{t.hero.accent}</span>
+              </h1>
+              <p className="sub">{t.hero.subtitle}</p>
+              <div className="hero-cta">
+                <Magnetic>
+                  <a href="#contact" className="btn btn-primary">
+                    {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
+                  </a>
+                </Magnetic>
+                <a href="#services" className="btn btn-ghost">{t.hero.cta2}</a>
+              </div>
+            </div>
+            <div className="hero-panel invert">
+              <Logo variant="mark" animate />
+              <div className="hero-panel-word">{t.identity.tagline}</div>
+              <p className="hero-panel-essence">
+                <span className="serif">{t.identity.essence}</span>
+              </p>
             </div>
           </div>
           <div className="container hero-foot" aria-hidden="true">
@@ -141,31 +150,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- IDENTITY · logo protagonista (único momento oscuro) ---------- */}
-        <section className="identity invert">
-          <div className="identity-glow" data-parallax data-parallax-speed="0.05" aria-hidden="true" />
-          <Reveal>
-            <Kicker n="03">{t.kickers.identity}</Kicker>
-          </Reveal>
-          <div className="identity-mark" data-parallax data-parallax-speed="0.06">
-            <Logo variant="mark" animate />
-          </div>
-          <Reveal>
-            <div className="identity-word">{t.identity.tagline}</div>
-          </Reveal>
-          <Reveal delay={120}>
-            <p className="identity-essence">
-              <span className="serif">{t.identity.essence}</span>
-            </p>
-          </Reveal>
-        </section>
-
         {/* ---------- CAPABILITIES ---------- */}
         <section className="section section-top" id="capabilities">
           <div className="container editorial">
             <div className="editorial-head">
               <Reveal className="section-head">
-                <Kicker n="04">{t.kickers.capabilities}</Kicker>
+                <Kicker n="03">{t.kickers.capabilities}</Kicker>
                 <TextReveal as="h2" text={t.support.title} />
               </Reveal>
             </div>
@@ -199,7 +189,7 @@ export default function Home() {
         <section className="section section-top" id="packages">
           <div className="container">
             <Reveal className="section-head">
-              <Kicker n="05">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
+              <Kicker n="04">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
               <TextReveal as="h2" text={t.packages.title} />
               <p className="sub">{t.packages.note}</p>
             </Reveal>
@@ -223,10 +213,10 @@ export default function Home() {
         </section>
 
         {/* ---------- CTA final ---------- */}
-        <section className="section section-top cta-final" id="contact">
+        <section className="section section-top cta-final invert" id="contact">
           <div className="container">
             <Reveal>
-              <Kicker n="06">{t.kickers.contact}</Kicker>
+              <Kicker n="05">{t.kickers.contact}</Kicker>
               <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
               <div className="cta-actions">

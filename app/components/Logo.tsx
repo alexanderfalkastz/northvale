@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Monograma original de Northvale: un círculo de precisión (tecnología) con
- * picos anidados ("north" / valle) y una estrella-norte en dorado.
- * `animate` dibuja el trazo cuando entra en viewport.
+ * Monograma de Northvale: picos "north/vale" en trazo grueso dentro de un aro
+ * fino de precisión, con estrella-norte dorada. Marcado y reconocible a chico
+ * y grande. `animate` dibuja el trazo al entrar en viewport.
  */
 export default function Logo({
   variant = "mark",
@@ -45,10 +45,10 @@ export default function Logo({
         fill="none"
         aria-hidden="true"
       >
-        <circle cx="60" cy="60" r="50" pathLength={1} className="lg-stroke" />
-        <path d="M34 82 L60 42 L86 82" pathLength={1} className="lg-stroke" />
-        <path d="M46 82 L60 60 L74 82" pathLength={1} className="lg-stroke lg-inner" />
-        <circle cx="60" cy="42" r="3.4" className="lg-star" />
+        <circle cx="60" cy="60" r="52" pathLength={1} className="lg-stroke lg-frame" />
+        <path d="M30 84 L60 40 L90 84" pathLength={1} className="lg-stroke lg-peak" />
+        <path d="M44 84 L60 62 L76 84" pathLength={1} className="lg-stroke lg-peak lg-inner" />
+        <circle cx="60" cy="40" r="4.6" className="lg-star" />
       </svg>
       {variant === "full" && <span className="logo-word">Northvale</span>}
     </span>
