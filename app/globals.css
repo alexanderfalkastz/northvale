@@ -395,8 +395,12 @@ img,video{max-width:100%;display:block}
 .menu-icon i:last-child{bottom:0}
 .menu-icon.open i:first-child{transform:translateY(6px) rotate(45deg)}
 .menu-icon.open i:last-child{transform:translateY(-6px) rotate(-45deg)}
-.menu-overlay{position:fixed;inset:0;z-index:55;background:var(--bg);opacity:0;pointer-events:none;transition:opacity .4s var(--ease);display:flex;align-items:center;justify-content:center}
+.menu-overlay{position:fixed;inset:0;z-index:90;background:var(--bg);opacity:0;pointer-events:none;transition:opacity .4s var(--ease);display:flex;align-items:center;justify-content:center}
 .menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-close{position:absolute;top:18px;right:16px;width:46px;height:46px;background:none;border:none;cursor:pointer}
+.menu-close::before,.menu-close::after{content:"";position:absolute;left:11px;top:22px;width:24px;height:2px;background:var(--text);border-radius:2px}
+.menu-close::before{transform:rotate(45deg)}
+.menu-close::after{transform:rotate(-45deg)}
 .menu-nav{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
 .menu-nav a:not(.btn){font-family:var(--font-display),serif;font-weight:500;font-size:2.2rem;color:var(--text);letter-spacing:-.01em}
 .menu-nav a:not(.btn):hover{color:var(--accent)}
@@ -408,6 +412,7 @@ img,video{max-width:100%;display:block}
   .nav-right .lang{display:none}
   .hero{min-height:auto;padding:104px 0 56px}
   .hero-panel{min-height:300px}
+  .hero-foot{display:none}
 }
 
 /* CTA final grande */
