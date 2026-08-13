@@ -1,6 +1,5 @@
 import { resolveLocale, translations } from "../lib/i18n";
 import LanguageToggle from "./components/LanguageToggle";
-import BeforeAfter from "./components/BeforeAfter";
 import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ScrollHeader from "./components/ScrollHeader";
@@ -8,7 +7,6 @@ import SmoothScroll from "./components/SmoothScroll";
 import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
 import Hero3D from "./components/Hero3D";
-import Tilt from "./components/Tilt";
 import Magnetic from "./components/Magnetic";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
@@ -41,22 +39,23 @@ export default function Home() {
             <Logo variant="full" />
           </a>
           <div className="nav-mid">
-            <a href="#experience">{t.nav.positioning}</a>
-            <a href="#work">{t.nav.work}</a>
+            <a href="#services">{t.nav.positioning}</a>
             <a href="#capabilities">{t.nav.approach}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
           <div className="nav-right">
             <LanguageToggle locale={locale} />
-            <a href="#contact" className="btn btn-ghost btn-sm">
-              {t.nav.cta} <span className="arw" aria-hidden="true">→</span>
-            </a>
+            <Magnetic>
+              <a href="#contact" className="btn btn-ghost btn-sm">
+                {t.nav.cta} <span className="arw" aria-hidden="true">→</span>
+              </a>
+            </Magnetic>
           </div>
         </div>
       </nav>
 
       <main id="top">
-        {/* ---------- 01 · IMPACT (hero) ---------- */}
+        {/* ---------- IMPACT · hero ---------- */}
         <header className="hero">
           <div className="hero-fluid" aria-hidden="true">
             <span className="blob blob-a" />
@@ -76,7 +75,7 @@ export default function Home() {
                   {t.hero.cta} <span className="arw" aria-hidden="true">→</span>
                 </a>
               </Magnetic>
-              <a href="#work" className="btn btn-ghost">{t.hero.cta2}</a>
+              <a href="#services" className="btn btn-ghost">{t.hero.cta2}</a>
             </div>
           </div>
           <div className="container hero-foot" aria-hidden="true">
@@ -85,7 +84,7 @@ export default function Home() {
               <span className="line" />
             </span>
             <span className="kicker">
-              <span className="k-num">01</span> Impact
+              <span className="k-num">◆</span> Northvale Studio
             </span>
           </div>
         </header>
@@ -102,7 +101,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ---------- 01 · POSITIONING (manifiesto) ---------- */}
+        {/* ---------- POSITIONING · manifiesto ---------- */}
         <section className="statement">
           <div className="container">
             <Reveal>
@@ -115,11 +114,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- 02 · IDENTITY (logo protagonista) ---------- */}
+        {/* ---------- EXPERIENCE · servicios (lista editorial) ---------- */}
+        <section className="section section-top" id="services">
+          <div className="container">
+            <Reveal className="section-head">
+              <Kicker n="02">{t.kickers.experience}</Kicker>
+              <TextReveal as="h2" text={t.services.title} />
+            </Reveal>
+            <div className="svc-list">
+              {t.services.items.map((item, i) => (
+                <Reveal as="a" href="#contact" className="svc-row" key={i} delay={i * 50}>
+                  <span className="svc-ix">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="svc-name">{item.name}</span>
+                  <span className="svc-desc">{item.desc}</span>
+                  <span className="svc-arw" aria-hidden="true">→</span>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- IDENTITY · logo protagonista (único momento oscuro) ---------- */}
         <section className="identity invert">
           <div className="identity-glow" data-parallax data-parallax-speed="0.05" aria-hidden="true" />
           <Reveal>
-            <Kicker n="02">{t.kickers.identity}</Kicker>
+            <Kicker n="03">{t.kickers.identity}</Kicker>
           </Reveal>
           <div className="identity-mark" data-parallax data-parallax-speed="0.06">
             <Logo variant="mark" animate />
@@ -134,35 +153,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ---------- 03 · EXPERIENCE (servicios) ---------- */}
-        <section className="section section-top" id="experience">
-          <div className="container">
-            <Reveal className="section-head">
-              <Kicker n="03">{t.kickers.experience}</Kicker>
-              <TextReveal as="h2" text={t.services.title} />
-            </Reveal>
-            <div className="service-rows">
-              {t.services.items.map((item, i) => (
-                <Reveal as="article" className="service-row" key={i} delay={i * 40}>
-                  <div className="service-media">
-                    <Tilt>
-                      <div className={`media media--16x9 hoverable ${i < 2 ? "media--video" : ""}`}>
-                        <span className="media-label">{item.name}</span>
-                      </div>
-                    </Tilt>
-                  </div>
-                  <div className="service-text">
-                    <span className="num">{String(i + 1).padStart(2, "0")} / 04</span>
-                    <h3>{item.name}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- 04 · CAPABILITIES (support + proceso) ---------- */}
+        {/* ---------- CAPABILITIES ---------- */}
         <section className="section section-top" id="capabilities">
           <div className="container">
             <Reveal className="section-head">
@@ -193,56 +184,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ---------- 05 · PROOF (trabajo + antes/después) ---------- */}
-        <section className="section section-top" id="work">
+        {/* ---------- CTA final ---------- */}
+        <section className="section section-top cta-final" id="contact">
           <div className="container">
-            <Reveal className="section-head">
-              <Kicker n="05">{t.kickers.work}</Kicker>
-              <TextReveal as="h2" text={t.work.title} />
-            </Reveal>
-            <div className="work-grid">
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <Reveal key={i} delay={(i % 3) * 70}>
-                  <Tilt>
-                    <div className={`media media--16x9 hoverable ${i % 3 === 0 ? "media--video" : ""}`}>
-                      <span className="media-label">Northvale · 0{i + 1}</span>
-                    </div>
-                  </Tilt>
-                </Reveal>
-              ))}
-            </div>
-            <p className="work-note">{t.work.note}</p>
-
-            <Reveal className="section-head" style={{ marginTop: "clamp(64px,8vw,110px)" }}>
-              <TextReveal as="h2" text={t.beforeAfter.title} />
-            </Reveal>
             <Reveal>
-              <BeforeAfter
-                before={t.beforeAfter.before}
-                after={t.beforeAfter.after}
-                caption={t.beforeAfter.caption}
-              />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ---------- 06 · CTA (contacto) ---------- */}
-        <section className="section section-top" id="contact">
-          <div className="container contact-wrap">
-            <Reveal>
-              <Kicker n="06">{t.kickers.contact}</Kicker>
+              <Kicker n="05">{t.kickers.contact}</Kicker>
               <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
-            </Reveal>
-            <Reveal delay={80}>
-              <form className="form" method="POST" action="/api/contact">
-                <input name="name" placeholder={t.contact.name} required />
-                <input name="email" type="email" placeholder={t.contact.email} required />
-                <input name="propertyUrl" placeholder={t.contact.url} />
-                <button type="submit" className="btn btn-primary">
-                  {t.contact.submit} <span className="arw" aria-hidden="true">→</span>
-                </button>
-              </form>
+              <div className="cta-actions">
+                <Magnetic>
+                  <a href="mailto:hello@northvale.com" className="btn btn-primary btn-lg">
+                    {t.contact.submit} <span className="arw" aria-hidden="true">→</span>
+                  </a>
+                </Magnetic>
+                <span className="cta-email">hello@northvale.com</span>
+              </div>
             </Reveal>
           </div>
         </section>
@@ -253,7 +209,7 @@ export default function Home() {
         <div className="footer-inner">
           <Logo variant="full" />
           <p>{t.footer.tagline}</p>
-          <p>hello@northvale.com &nbsp;·&nbsp; {t.footer.rights}</p>
+          <p>{t.footer.rights}</p>
         </div>
       </footer>
     </>
