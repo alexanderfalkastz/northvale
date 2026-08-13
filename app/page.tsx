@@ -23,8 +23,8 @@ function Kicker({ n, children }: { n: string; children: React.ReactNode }) {
   );
 }
 
-export default function Home() {
-  const locale = resolveLocale();
+export default async function Home() {
+  const locale = await resolveLocale();
   const t = translations[locale];
   const marquee = [...t.services.items.map((i) => i.name), ...t.support.items.map((i) => i.name)];
 

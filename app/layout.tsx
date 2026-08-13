@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = resolveLocale();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await resolveLocale();
   return (
     <html lang={locale} className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>{children}</body>

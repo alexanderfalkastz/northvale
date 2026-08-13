@@ -6,10 +6,12 @@ export type Locale = "en" | "es";
  * Idioma del visitante (server-side):
  * 1) cookie `locale` (elección manual) → 2) Accept-Language → 3) inglés por defecto.
  */
-export function resolveLocale(): Locale {
-  const cookieLocale = cookies().get("locale")?.value;
+export async function resolveLocale(): Promise<Locale> {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get("locale")?.value;
   if (cookieLocale === "en" || cookieLocale === "es") return cookieLocale;
-  const accept = (headers().get("accept-language") || "").toLowerCase();
+  const headerStore = await headers();
+  const accept = (headerStore.get("accept-language") || "").toLowerCase();
   const first = accept.split(",")[0]?.trim() || "";
   return first.startsWith("es") ? "es" : "en";
 }
