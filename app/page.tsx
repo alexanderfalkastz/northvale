@@ -7,7 +7,6 @@ import ScrollProgress from "./components/ScrollProgress";
 import SmoothScroll from "./components/SmoothScroll";
 import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
-import Hero3D from "./components/Hero3D";
 import Magnetic from "./components/Magnetic";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
@@ -42,6 +41,7 @@ export default function Home() {
           </a>
           <div className="nav-mid">
             <a href="#services">{t.nav.positioning}</a>
+            <a href="#packages">{locale === "es" ? "Paquetes" : "Packages"}</a>
             <a href="#capabilities">{t.nav.approach}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
@@ -64,7 +64,6 @@ export default function Home() {
             <span className="blob blob-b" />
             <span className="blob blob-c" />
           </div>
-          <Hero3D />
           <div className="container hero-inner">
             <span className="kicker">{t.hero.eyebrow}</span>
             <h1>
@@ -196,11 +195,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------- PACKAGES (tarjetas estilo Orionix) ---------- */}
+        <section className="section section-top" id="packages">
+          <div className="container">
+            <Reveal className="section-head">
+              <Kicker n="05">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
+              <TextReveal as="h2" text={t.packages.title} />
+              <p className="sub">{t.packages.note}</p>
+            </Reveal>
+            <div className="pkg-grid">
+              {t.packages.items.map((p, i) => (
+                <Reveal className={`pkg ${p.featured ? "pkg-featured" : ""}`} key={i} delay={i * 70}>
+                  <span className="pkg-name">{p.name}</span>
+                  <div className="pkg-tagline">{p.tagline}</div>
+                  <ul className="pkg-features">
+                    {p.features.map((f, j) => (
+                      <li key={j}>{f}</li>
+                    ))}
+                  </ul>
+                  <a href="#contact" className="btn btn-primary">
+                    {p.cta} <span className="arw" aria-hidden="true">→</span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ---------- CTA final ---------- */}
         <section className="section section-top cta-final" id="contact">
           <div className="container">
             <Reveal>
-              <Kicker n="05">{t.kickers.contact}</Kicker>
+              <Kicker n="06">{t.kickers.contact}</Kicker>
               <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
               <div className="cta-actions">

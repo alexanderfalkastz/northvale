@@ -24,6 +24,7 @@ type Dict = {
   identity: { essence: string; tagline: string };
   services: { title: string; items: Item[] };
   support: { title: string; items: Item[] };
+  packages: { title: string; note: string; items: { name: string; tagline: string; features: string[]; cta: string; featured?: boolean }[] };
   beforeAfter: { title: string; caption: string; before: string; after: string };
   process: { title: string; steps: { n: string; t: string; d: string }[] };
   work: { title: string; note: string };
@@ -36,9 +37,9 @@ export const translations: Record<Locale, Dict> = {
     nav: { positioning: "Studio", work: "Work", approach: "Approach", contact: "Contact", cta: "Start a project" },
     hero: {
       eyebrow: "PREMIUM PROPERTY MARKETING",
-      title: "Property, rendered",
-      accent: "unforgettable.",
-      subtitle: "A visual marketing studio turning premium properties into cinematic content — and the strategy that makes them sell.",
+      title: "Property that",
+      accent: "sells itself.",
+      subtitle: "A visual marketing studio. We turn premium properties into cinematic content — and the strategy that makes buyers act.",
       cta: "Request a property analysis",
       cta2: "See the work",
       reel: "Showreel",
@@ -78,6 +79,15 @@ export const translations: Record<Locale, Dict> = {
         { name: "Property Brand Identity", desc: "A name, a look and a story that make a property feel like a destination." },
       ],
     },
+    packages: {
+      title: "Ways to work together.",
+      note: "Every property is different — pricing is tailored per project.",
+      items: [
+        { name: "Essentials", tagline: "For a single premium listing.", features: ["Enhanced photography", "One cinematic reel", "Listing-ready delivery"], cta: "Request a quote" },
+        { name: "Signature", tagline: "The full cinematic package.", features: ["Cinematic property film", "Social reels + stills", "Enhanced photography", "Content strategy"], cta: "Request a quote", featured: true },
+        { name: "Studio", tagline: "For portfolios & managers.", features: ["Everything in Signature", "Ad strategy & campaigns", "Social media management", "Direct-booking microsite"], cta: "Talk to us" },
+      ],
+    },
     beforeAfter: {
       title: "The same property. A different desire.",
       caption: "Drag to compare.",
@@ -108,9 +118,9 @@ export const translations: Record<Locale, Dict> = {
     nav: { positioning: "Estudio", work: "Trabajo", approach: "Enfoque", contact: "Contacto", cta: "Iniciar proyecto" },
     hero: {
       eyebrow: "MARKETING PREMIUM DE PROPIEDADES",
-      title: "Propiedades, vueltas",
-      accent: "inolvidables.",
-      subtitle: "Un estudio de marketing visual que convierte propiedades premium en contenido cinematográfico — y la estrategia para que vendan.",
+      title: "Propiedades que",
+      accent: "se venden solas.",
+      subtitle: "Un estudio de marketing visual. Convertimos propiedades premium en contenido cinematográfico — y la estrategia para que el comprador actúe.",
       cta: "Solicitar análisis",
       cta2: "Ver el trabajo",
       reel: "Showreel",
@@ -148,6 +158,15 @@ export const translations: Record<Locale, Dict> = {
         { name: "Gestión de Redes", desc: "Una presencia premium y constante — planificada, producida y publicada." },
         { name: "Micrositios de Reserva Directa", desc: "Una página de reservas propia — te quedas con el huésped, evitas la comisión." },
         { name: "Identidad de Marca", desc: "Un nombre, una estética y una historia que vuelven destino a una propiedad." },
+      ],
+    },
+    packages: {
+      title: "Formas de trabajar juntos.",
+      note: "Cada propiedad es distinta — el precio se arma por proyecto.",
+      items: [
+        { name: "Esencial", tagline: "Para una propiedad premium.", features: ["Fotografía mejorada", "Un reel cinematográfico", "Entrega lista para publicar"], cta: "Pedir presupuesto" },
+        { name: "Signature", tagline: "El paquete cinematográfico completo.", features: ["Film cinematográfico", "Reels + fotos", "Fotografía mejorada", "Estrategia de contenido"], cta: "Pedir presupuesto", featured: true },
+        { name: "Studio", tagline: "Para carteras y gestoras.", features: ["Todo lo de Signature", "Estrategia y campañas", "Gestión de redes", "Micrositio de reserva directa"], cta: "Hablemos" },
       ],
     },
     beforeAfter: {
