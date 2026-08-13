@@ -122,6 +122,13 @@ async function main() {
     console.log(`Score asignado: ${score}`);
   }
 
+  // history (jsonb): log de cambios de estado, documentado en CLAUDE.md.
+  const now = new Date().toISOString();
+  const history = [
+    { status: "Nuevo", at: now, by: "scout" },
+    { status: "Analizado", at: now, score, by: args.score ? "manual" : "analyst-ai" },
+  ];
+
   const { data, error } = await supabase
     .from("properties")
     .insert({
@@ -130,6 +137,7 @@ async function main() {
       status: "Analizado",
       source_url: args.url,
       photos: args.photos ? args.photos.split(",") : [],
+      history,
     })
     .select()
     .single();
