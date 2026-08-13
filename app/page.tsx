@@ -8,6 +8,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
 import Magnetic from "./components/Magnetic";
+import MobileMenu from "./components/MobileMenu";
 
 export const dynamic = "force-dynamic"; // idioma por-usuario (Accept-Language / cookie)
 
@@ -48,10 +49,19 @@ export default function Home() {
           <div className="nav-side nav-right">
             <LanguageToggle locale={locale} />
             <Magnetic>
-              <a href="#contact" className="btn btn-ghost btn-sm">
+              <a href="#contact" className="btn btn-ghost btn-sm nav-cta">
                 {t.nav.cta} <span className="arw" aria-hidden="true">→</span>
               </a>
             </Magnetic>
+            <MobileMenu
+              links={[
+                { href: "#services", label: t.nav.positioning },
+                { href: "#packages", label: locale === "es" ? "Paquetes" : "Packages" },
+                { href: "#capabilities", label: t.nav.approach },
+                { href: "#contact", label: t.nav.contact },
+              ]}
+              cta={{ href: "#contact", label: t.nav.cta }}
+            />
           </div>
         </div>
       </nav>
