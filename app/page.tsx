@@ -229,14 +229,21 @@ export default function Home() {
               <Kicker n="05">{t.kickers.contact}</Kicker>
               <h2>{t.contact.title}</h2>
               <p className="sub">{t.contact.subtitle}</p>
-              <div className="cta-actions">
-                <Magnetic>
-                  <a href="mailto:hello@northvale.com" className="btn btn-primary btn-lg">
-                    {t.contact.submit} <span className="arw" aria-hidden="true">→</span>
-                  </a>
-                </Magnetic>
-                <span className="cta-email">hello@northvale.com</span>
-              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <form className="form" action="/api/contact" method="POST" style={{ marginTop: 36 }}>
+                <input name="name" placeholder={t.contact.name} required />
+                <input name="email" type="email" placeholder={t.contact.email} required />
+                <input name="propertyUrl" placeholder={t.contact.url} />
+                <button type="submit" className="btn btn-primary btn-lg">
+                  {t.contact.submit} <span className="arw" aria-hidden="true">→</span>
+                </button>
+              </form>
+            </Reveal>
+            <Reveal delay={140}>
+              <p className="cta-email" style={{ marginTop: 24 }}>
+                <a href="mailto:hello@northvale.com">hello@northvale.com</a>
+              </p>
             </Reveal>
           </div>
         </section>
