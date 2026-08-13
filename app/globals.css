@@ -5,8 +5,8 @@
   --bg-2:#f0efec;
   --panel:#f5f4f1;
   --text:#0a0a0a;
-  --muted:#6a6a67;
-  --faint:#a8a8a3;
+  --muted:#57554f;
+  --faint:#9a9a95;
   --line:rgba(10,10,10,.12);
   --line-2:rgba(10,10,10,.22);
   --accent:#e03131;
@@ -369,6 +369,26 @@ img,video{max-width:100%;display:block}
 .pkg-features li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.55}
 .pkg .btn{width:100%;justify-content:center}
 @media (max-width:900px){.pkg-grid{grid-template-columns:1fr}}
+
+/* ===== v8 — menú con logo centrado + logo entretenido (gira al hover) ===== */
+.nav-centered{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.nav-side{display:flex;align-items:center;gap:28px}
+.nav-left{justify-self:start}
+.nav-right{justify-self:end}
+.nav-logo{justify-self:center;display:inline-flex}
+.nav-side a{font-size:.9rem;color:var(--muted);position:relative;transition:color .3s}
+.nav-side a:hover{color:var(--text)}
+.nav-side a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--accent);transition:width .35s var(--ease)}
+.nav-side a:hover::after{width:100%}
+.nav-logo .logo-mark{transition:transform .9s var(--ease-out)}
+.nav-logo:hover .logo-mark{transform:rotate(360deg)}
+.nav-logo:hover .lg-star{fill:var(--accent)}
+@media (max-width:900px){
+  .nav-left{display:none}
+}
+@media (max-width:560px){
+  .nav-right .lang{display:none}
+}
 
 /* CTA final grande */
 .cta-final{text-align:left}

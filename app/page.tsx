@@ -35,17 +35,17 @@ export default function Home() {
 
       {/* ---------- NAV ---------- */}
       <nav className="nav">
-        <div className="nav-inner">
-          <a href="#top" aria-label="Northvale">
-            <Logo variant="full" />
-          </a>
-          <div className="nav-mid">
+        <div className="nav-inner nav-centered">
+          <div className="nav-side nav-left">
             <a href="#services">{t.nav.positioning}</a>
             <a href="#packages">{locale === "es" ? "Paquetes" : "Packages"}</a>
             <a href="#capabilities">{t.nav.approach}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
-          <div className="nav-right">
+          <a href="#top" className="nav-logo" aria-label="Northvale">
+            <Logo variant="full" />
+          </a>
+          <div className="nav-side nav-right">
             <LanguageToggle locale={locale} />
             <Magnetic>
               <a href="#contact" className="btn btn-ghost btn-sm">
