@@ -3,6 +3,7 @@ import LanguageToggle from "./components/LanguageToggle";
 import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ScrollHeader from "./components/ScrollHeader";
+import ScrollProgress from "./components/ScrollProgress";
 import SmoothScroll from "./components/SmoothScroll";
 import Parallax from "./components/Parallax";
 import Logo from "./components/Logo";
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <>
       <ScrollHeader />
+      <ScrollProgress />
       <SmoothScroll />
       <Parallax />
 
@@ -116,20 +118,26 @@ export default function Home() {
 
         {/* ---------- EXPERIENCE · servicios (lista editorial) ---------- */}
         <section className="section section-top" id="services">
-          <div className="container">
-            <Reveal className="section-head">
-              <Kicker n="02">{t.kickers.experience}</Kicker>
-              <TextReveal as="h2" text={t.services.title} />
-            </Reveal>
-            <div className="svc-list">
-              {t.services.items.map((item, i) => (
-                <Reveal as="a" href="#contact" className="svc-row" key={i} delay={i * 50}>
-                  <span className="svc-ix">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="svc-name">{item.name}</span>
-                  <span className="svc-desc">{item.desc}</span>
-                  <span className="svc-arw" aria-hidden="true">→</span>
-                </Reveal>
-              ))}
+          <div className="container editorial">
+            <div className="editorial-head">
+              <Reveal className="section-head">
+                <Kicker n="02">{t.kickers.experience}</Kicker>
+                <TextReveal as="h2" text={t.services.title} />
+              </Reveal>
+            </div>
+            <div className="editorial-body">
+              <div className="svc-list">
+                {t.services.items.map((item, i) => (
+                  <Reveal as="a" href="#contact" className="svc-row" key={i} delay={i * 50}>
+                    <span className="svc-ix">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="svc-main">
+                      <span className="svc-name">{item.name}</span>
+                      <span className="svc-desc">{item.desc}</span>
+                    </span>
+                    <span className="svc-arw" aria-hidden="true">→</span>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -155,31 +163,35 @@ export default function Home() {
 
         {/* ---------- CAPABILITIES ---------- */}
         <section className="section section-top" id="capabilities">
-          <div className="container">
-            <Reveal className="section-head">
-              <Kicker n="04">{t.kickers.capabilities}</Kicker>
-              <TextReveal as="h2" text={t.support.title} />
-            </Reveal>
-            <div className="support-grid">
-              {t.support.items.map((item, i) => (
-                <Reveal as="article" className="support-card" key={i} delay={i * 70}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <h3>{item.name}</h3>
-                  <p>{item.desc}</p>
-                </Reveal>
-              ))}
+          <div className="container editorial">
+            <div className="editorial-head">
+              <Reveal className="section-head">
+                <Kicker n="04">{t.kickers.capabilities}</Kicker>
+                <TextReveal as="h2" text={t.support.title} />
+              </Reveal>
             </div>
-            <Reveal className="section-head" style={{ marginTop: "clamp(64px,8vw,110px)" }}>
-              <TextReveal as="h2" text={t.process.title} />
-            </Reveal>
-            <div className="process-grid">
-              {t.process.steps.map((s, i) => (
-                <Reveal className="step" key={i} delay={i * 80}>
-                  <span className="num">{s.n}</span>
-                  <h3>{s.t}</h3>
-                  <p>{s.d}</p>
-                </Reveal>
-              ))}
+            <div className="editorial-body">
+              <div className="support-grid">
+                {t.support.items.map((item, i) => (
+                  <Reveal as="article" className="support-card" key={i} delay={i * 70}>
+                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <h3>{item.name}</h3>
+                    <p>{item.desc}</p>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal className="section-head" style={{ marginTop: "clamp(48px,6vw,80px)" }}>
+                <TextReveal as="h2" text={t.process.title} />
+              </Reveal>
+              <div className="process-grid">
+                {t.process.steps.map((s, i) => (
+                  <Reveal className="step" key={i} delay={i * 80}>
+                    <span className="num">{s.n}</span>
+                    <h3>{s.t}</h3>
+                    <p>{s.d}</p>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>

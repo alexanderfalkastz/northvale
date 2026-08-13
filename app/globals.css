@@ -187,7 +187,7 @@ img,video{max-width:100%;display:block}
 .ba-caption{margin-top:16px;color:var(--faint);font-family:var(--font-mono),monospace;font-size:.72rem;letter-spacing:.06em}
 
 /* ---------- process ---------- */
-.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,40px)}
+.process-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,3vw,40px)}
 .step{border-top:1px solid var(--line-2);padding-top:22px}
 .step .num{font-family:var(--font-mono),monospace;font-size:.8rem;color:var(--accent);letter-spacing:.1em}
 .step h3{font-size:1.25rem;margin:16px 0 8px;letter-spacing:-.015em}
@@ -301,20 +301,38 @@ img,video{max-width:100%;display:block}
 @media (max-width:900px){ .hero-3d{width:110%;right:-8%;opacity:.32} }
 
 /* Servicios como lista editorial (adiós recuadros grises) */
-.svc-list{margin-top:10px;border-top:1px solid var(--line)}
-.svc-row{display:grid;grid-template-columns:60px minmax(0,1.5fr) minmax(0,1fr) 44px;align-items:center;gap:28px;padding:clamp(26px,3.4vw,46px) 10px;border-bottom:1px solid var(--line);transition:background .45s var(--ease);color:inherit}
-.svc-ix{font-family:var(--font-mono),monospace;font-size:.76rem;letter-spacing:.08em;color:var(--accent)}
-.svc-name{font-family:var(--font-display),serif;font-weight:500;font-size:clamp(1.8rem,3.8vw,3.1rem);letter-spacing:-.01em;transition:transform .5s var(--ease-out)}
-.svc-desc{color:var(--muted);font-size:1rem;line-height:1.5}
-.svc-arw{justify-self:end;color:var(--faint);font-size:1.15rem;transition:transform .5s var(--ease-out),color .4s}
-.svc-row:hover{background:var(--bg-2)}
-.svc-row:hover .svc-name{transform:translateX(16px)}
+.svc-list{border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:52px 1fr 40px;align-items:center;gap:24px;padding:clamp(24px,3vw,40px) 8px;border-bottom:1px solid var(--line);transition:background .45s var(--ease),padding-left .45s var(--ease);color:inherit}
+.svc-ix{font-family:var(--font-mono),monospace;font-size:.76rem;letter-spacing:.08em;color:var(--accent);align-self:start;padding-top:.55em}
+.svc-main{display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc-name{font-family:var(--font-display),serif;font-weight:500;font-size:clamp(1.8rem,3.6vw,2.9rem);letter-spacing:-.01em;line-height:1.05;transition:transform .5s var(--ease-out)}
+.svc-desc{color:var(--muted);font-size:.98rem;line-height:1.5;max-width:46ch}
+.svc-arw{justify-self:end;align-self:center;color:var(--faint);font-size:1.15rem;transition:transform .5s var(--ease-out),color .4s}
+.svc-row:hover{background:var(--bg-2);padding-left:20px}
+.svc-row:hover .svc-name{transform:translateX(6px)}
 .svc-row:hover .svc-arw{transform:translateX(10px);color:var(--accent)}
-@media (max-width:760px){
-  .svc-row{grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline;padding:26px 4px}
-  .svc-desc{grid-column:1 / -1;margin-top:8px}
+@media (max-width:600px){
+  .svc-row{grid-template-columns:auto 1fr;gap:6px 14px;padding:24px 4px}
   .svc-arw{display:none}
 }
+
+/* ===== v6 — editorial sticky + glass + progreso de scroll ===== */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:60;pointer-events:none}
+.scroll-progress-bar{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--accent);will-change:transform}
+
+.editorial{display:grid;grid-template-columns:minmax(220px,.8fr) 1.7fr;gap:clamp(32px,6vw,96px);align-items:start}
+.editorial-head{position:sticky;top:120px}
+.editorial-head .section-head{margin-bottom:0}
+.editorial-body{min-width:0}
+.editorial-body .section-head{margin-bottom:34px}
+@media (max-width:900px){
+  .editorial{grid-template-columns:1fr;gap:28px}
+  .editorial-head{position:static}
+}
+
+/* Glass sutil (fluid.glass) en tarjetas de capacidades */
+.support-card{background:rgba(255,255,255,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.support-card:hover{background:rgba(255,255,255,.66)}
 
 /* CTA final grande */
 .cta-final{text-align:left}
