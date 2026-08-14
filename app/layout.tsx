@@ -24,6 +24,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://northvale.com"),
   title: "Northvale — Premium Property Marketing",
   description:
     "A visual marketing studio. We turn premium properties into cinematic content — and the strategy that makes buyers act.",
@@ -31,6 +32,11 @@ export const metadata: Metadata = {
     title: "Northvale — Premium Property Marketing",
     description: "Cinematic visual marketing for luxury properties.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Northvale — Premium Property Marketing",
+    description: "Cinematic visual marketing for luxury properties.",
   },
 };
 
