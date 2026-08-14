@@ -23,8 +23,16 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+// Base para resolver la URL absoluta de la imagen OG:
+// override manual (NEXT_PUBLIC_SITE_URL) → dominio de producción de Vercel → fallback.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://northvale.com");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://northvale.com"),
+  metadataBase: new URL(siteUrl),
   title: "Northvale — Premium Property Marketing",
   description:
     "A visual marketing studio. We turn premium properties into cinematic content — and the strategy that makes buyers act.",
