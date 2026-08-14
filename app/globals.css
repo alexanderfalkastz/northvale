@@ -374,7 +374,8 @@ img,video{max-width:100%;display:block}
 /* ===== v8 — menú con logo centrado + logo entretenido (gira al hover) ===== */
 .nav-centered{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
 .nav-side{display:flex;align-items:center;gap:28px}
-.nav-left{justify-self:start}
+.nav-left{justify-self:start;gap:22px;flex-wrap:nowrap}
+.nav-left a{font-size:.85rem;white-space:nowrap}
 .nav-right{justify-self:end}
 .nav-logo{justify-self:center;display:inline-flex}
 .nav-side a{font-size:.9rem;color:var(--muted);position:relative;transition:color .3s}

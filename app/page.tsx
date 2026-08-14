@@ -39,9 +39,10 @@ export default async function Home() {
       <nav className="nav">
         <div className="nav-inner nav-centered">
           <div className="nav-side nav-left">
-            <a href="#services">{t.nav.positioning}</a>
-            <a href="#packages">{locale === "es" ? "Paquetes" : "Packages"}</a>
-            <a href="#capabilities">{t.nav.approach}</a>
+            <a href="#services">{t.nav.services}</a>
+            <a href="#capabilities">{t.nav.howWeWork}</a>
+            <a href="#transformation">{t.nav.difference}</a>
+            <a href="#packages">{t.nav.investment}</a>
             <a href="#contact">{t.nav.contact}</a>
           </div>
           <a href="#top" className="nav-logo" aria-label="Northvale">
@@ -56,9 +57,10 @@ export default async function Home() {
             </Magnetic>
             <MobileMenu
               links={[
-                { href: "#services", label: t.nav.positioning },
-                { href: "#packages", label: locale === "es" ? "Paquetes" : "Packages" },
-                { href: "#capabilities", label: t.nav.approach },
+                { href: "#services", label: t.nav.services },
+                { href: "#capabilities", label: t.nav.howWeWork },
+                { href: "#transformation", label: t.nav.difference },
+                { href: "#packages", label: t.nav.investment },
                 { href: "#contact", label: t.nav.contact },
               ]}
               cta={{ href: "#contact", label: t.nav.cta }}
@@ -200,7 +202,7 @@ export default async function Home() {
         <section className="section section-top" id="transformation">
           <div className="container">
             <Reveal className="section-head">
-              <Kicker n="04">{locale === "es" ? "Transformación" : "Transformation"}</Kicker>
+              <Kicker n="04">{t.kickers.difference}</Kicker>
               <TextReveal as="h2" text={t.beforeAfter.title} />
             </Reveal>
             <Reveal>
@@ -217,7 +219,7 @@ export default async function Home() {
         <section className="section section-top" id="packages">
           <div className="container">
             <Reveal className="section-head">
-              <Kicker n="05">{locale === "es" ? "Paquetes" : "Packages"}</Kicker>
+              <Kicker n="05">{t.kickers.investment}</Kicker>
               <TextReveal as="h2" text={t.packages.title} />
               <p className="sub">{t.packages.note}</p>
             </Reveal>

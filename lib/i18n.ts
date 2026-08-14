@@ -19,9 +19,9 @@ export async function resolveLocale(): Promise<Locale> {
 type Item = { name: string; desc: string };
 
 type Dict = {
-  nav: { positioning: string; work: string; approach: string; contact: string; cta: string };
+  nav: { services: string; howWeWork: string; difference: string; investment: string; contact: string; cta: string };
   hero: { eyebrow: string; title: string; accent: string; subtitle: string; cta: string; cta2: string; reel: string };
-  kickers: { positioning: string; identity: string; experience: string; capabilities: string; work: string; contact: string };
+  kickers: { positioning: string; identity: string; experience: string; capabilities: string; difference: string; investment: string; contact: string };
   statement: { title: string; accent: string; text: string };
   identity: { essence: string; tagline: string };
   services: { title: string; items: Item[] };
@@ -29,7 +29,6 @@ type Dict = {
   packages: { title: string; note: string; items: { name: string; model: string; tagline: string; features: string[]; cta: string; featured?: boolean }[] };
   beforeAfter: { title: string; caption: string; before: string; after: string };
   process: { title: string; steps: { n: string; t: string; d: string }[] };
-  work: { title: string; note: string };
   contact: { title: string; subtitle: string; name: string; email: string; url: string; submit: string };
   footer: { tagline: string; rights: string };
   thanks: { title: string; text: string; back: string };
@@ -37,22 +36,23 @@ type Dict = {
 
 export const translations: Record<Locale, Dict> = {
   en: {
-    nav: { positioning: "Studio", work: "Work", approach: "Approach", contact: "Contact", cta: "Start a project" },
+    nav: { services: "What We Build", howWeWork: "How We Work", difference: "The Difference", investment: "Investment", contact: "Let's Talk", cta: "Start a project" },
     hero: {
       eyebrow: "PREMIUM PROPERTY MARKETING",
       title: "Property that",
       accent: "sells itself.",
       subtitle: "A visual marketing studio. We turn premium properties into cinematic content — and the strategy that makes buyers act.",
       cta: "Request a property analysis",
-      cta2: "See the work",
+      cta2: "See what we build",
       reel: "Showreel",
     },
     kickers: {
       positioning: "Positioning",
       identity: "Identity",
-      experience: "Experience",
-      capabilities: "Capabilities",
-      work: "Selected Work",
+      experience: "What We Build",
+      capabilities: "How We Work",
+      difference: "The Difference",
+      investment: "Investment",
       contact: "Contact",
     },
     statement: {
@@ -106,7 +106,6 @@ export const translations: Record<Locale, Dict> = {
         { n: "04", t: "Deliver", d: "Ready-to-publish assets that perform." },
       ],
     },
-    work: { title: "Properties, reimagined.", note: "Selected work — case studies on request." },
     contact: {
       title: "Let's make your property unforgettable.",
       subtitle: "Send us a listing. We'll show you what's possible — at no cost.",
@@ -123,22 +122,23 @@ export const translations: Record<Locale, Dict> = {
     },
   },
   es: {
-    nav: { positioning: "Estudio", work: "Trabajo", approach: "Enfoque", contact: "Contacto", cta: "Iniciar proyecto" },
+    nav: { services: "Qué Creamos", howWeWork: "Cómo Trabajamos", difference: "La Diferencia", investment: "Inversión", contact: "Hablemos", cta: "Iniciar proyecto" },
     hero: {
       eyebrow: "MARKETING PREMIUM DE PROPIEDADES",
       title: "Propiedades que",
       accent: "se venden solas.",
       subtitle: "Un estudio de marketing visual. Convertimos propiedades premium en contenido cinematográfico — y la estrategia para que el comprador actúe.",
       cta: "Solicitar análisis",
-      cta2: "Ver el trabajo",
+      cta2: "Ver qué creamos",
       reel: "Showreel",
     },
     kickers: {
       positioning: "Posicionamiento",
       identity: "Identidad",
-      experience: "Experiencia",
-      capabilities: "Capacidades",
-      work: "Trabajo",
+      experience: "Qué Creamos",
+      capabilities: "Cómo Trabajamos",
+      difference: "La Diferencia",
+      investment: "Inversión",
       contact: "Contacto",
     },
     statement: {
@@ -192,7 +192,6 @@ export const translations: Record<Locale, Dict> = {
         { n: "04", t: "Entregamos", d: "Activos listos para publicar que rinden." },
       ],
     },
-    work: { title: "Propiedades, reimaginadas.", note: "Trabajo seleccionado — casos a pedido." },
     contact: {
       title: "Hagamos tu propiedad inolvidable.",
       subtitle: "Envíanos un anuncio. Te mostramos lo que es posible — sin costo.",
